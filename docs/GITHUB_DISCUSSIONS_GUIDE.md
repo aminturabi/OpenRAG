@@ -10,7 +10,7 @@ We encourage community members to use **GitHub Discussions** for open-ended ques
 | --- | --- |
 | **💡 Ideas** | Propose new architectural patterns, plugin types, or configuration schemes. |
 | **❓ Q&A** | Ask for assistance with setup, custom plugin development, or dependency issues. |
-| **🙌 Show and Tell** | Share apps, research pipelines, or custom integrations built on top of OpenRAG! |
+| **🙌 Show and Tell** | Share apps, research pipelines, or custom integrations built on top of RAGForge! |
 | **🏗️ Architecture** | Deep-dive discussions into core contracts, DI containers, and performance optimizations. |
 | **🚀 Releases** | Announcements regarding new version tags, release notes, and roadmap milestones. |
 

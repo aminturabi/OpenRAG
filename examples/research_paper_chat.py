@@ -1,4 +1,4 @@
-"""Example: Chatting with Research Papers using OpenRAG."""
+"""Example: Chatting with Research Papers using RAGForge."""
 
 import os
 import sys
@@ -19,7 +19,7 @@ def main():
     print(f"Indexing research paper '{sample_pdf}' and asking: '{question}'...")
     try:
         result = run_file_chat(sample_pdf, question)
-        print("\n=== OpenRAG Response ===")
+        print("\n=== RAGForge Response ===")
         print(result["answer"])
     except Exception as e:
         print(f"Error during research paper chat execution: {e}")

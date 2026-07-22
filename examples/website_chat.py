@@ -1,4 +1,4 @@
-"""Example: Chatting with Website content using OpenRAG."""
+"""Example: Chatting with Website content using RAGForge."""
 
 import os
 import sys
@@ -14,10 +14,10 @@ def main():
     # Demonstrating WebLoader parsing an HTML structure
     html_sample = """
     <html>
-        <head><title>OpenRAG Modular Framework</title></head>
+        <head><title>RAGForge Modular Framework</title></head>
         <body>
-            <h1>Welcome to OpenRAG</h1>
-            <p>OpenRAG is an open-source framework for building modular Retrieval-Augmented Generation systems.</p>
+            <h1>Welcome to RAGForge</h1>
+            <p>RAGForge is an open-source framework for building modular Retrieval-Augmented Generation systems.</p>
             <p>It supports customizable vector stores including ChromaDB, FAISS, Qdrant, and Pinecone.</p>
         </body>
     </html>
@@ -26,7 +26,7 @@ def main():
         f.write(html_sample)
         temp_html_path = f.name
 
-    question = "Which vector stores are supported by OpenRAG?"
+    question = "Which vector stores are supported by RAGForge?"
     print(f"Indexing web content and asking: '{question}'...")
 
     try:
@@ -34,7 +34,7 @@ def main():
         idx_res = service.index_document(temp_html_path, "sample_website.html")
         result = service.query(idx_res["collection_name"], question)
 
-        print("\n=== OpenRAG Response ===")
+        print("\n=== RAGForge Response ===")
         print(result["answer"])
     finally:
         if os.path.exists(temp_html_path):

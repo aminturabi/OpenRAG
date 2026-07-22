@@ -1,4 +1,4 @@
-"""Example: Chatting with YouTube transcripts using OpenRAG."""
+"""Example: Chatting with YouTube transcripts using RAGForge."""
 
 import os
 import sys
@@ -28,7 +28,7 @@ def main():
     print(f"Querying transcript: '{question}'...")
 
     result = service.query(col_name, question)
-    print("\n=== OpenRAG Response ===")
+    print("\n=== RAGForge Response ===")
     print(result["answer"])
 
 

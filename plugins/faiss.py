@@ -1,4 +1,4 @@
-"""FAISS vector store plugin for OpenRAG."""
+"""FAISS vector store plugin for RAGForge."""
 
 import os
 import pickle

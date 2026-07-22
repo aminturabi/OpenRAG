@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Application State
     // -------------------------------------------------------------
     const state = {
-        activeCollection: localStorage.getItem('openrag_collection') || localStorage.getItem('clarity_rag_collection') || null,
-        activeFilename: localStorage.getItem('openrag_filename') || localStorage.getItem('clarity_rag_filename') || null,
-        activeChunksCount: localStorage.getItem('openrag_chunks') || localStorage.getItem('clarity_rag_chunks') || 0,
-        apiKey: localStorage.getItem('openrag_groq_api_key') || localStorage.getItem('clarity_groq_api_key') || '',
-        topK: parseInt(localStorage.getItem('openrag_top_k') || localStorage.getItem('clarity_top_k')) || 4,
+        activeCollection: localStorage.getItem('ragforge_collection') || localStorage.getItem('openrag_collection') || localStorage.getItem('clarity_rag_collection') || null,
+        activeFilename: localStorage.getItem('ragforge_filename') || localStorage.getItem('openrag_filename') || localStorage.getItem('clarity_rag_filename') || null,
+        activeChunksCount: localStorage.getItem('ragforge_chunks') || localStorage.getItem('openrag_chunks') || localStorage.getItem('clarity_rag_chunks') || 0,
+        apiKey: localStorage.getItem('ragforge_groq_api_key') || localStorage.getItem('openrag_groq_api_key') || localStorage.getItem('clarity_groq_api_key') || '',
+        topK: parseInt(localStorage.getItem('ragforge_top_k') || localStorage.getItem('openrag_top_k') || localStorage.getItem('clarity_top_k')) || 4,
         messageContexts: {} // Map to store message ID -> context chunks
     };
 
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (elements.apiKeyInput) {
             elements.apiKeyInput.addEventListener('input', (e) => {
                 state.apiKey = e.target.value.trim();
-                localStorage.setItem('openrag_groq_api_key', state.apiKey);
+                localStorage.setItem('ragforge_groq_api_key', state.apiKey);
             });
         }
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.topKSlider.addEventListener('input', (e) => {
             state.topK = parseInt(e.target.value);
             elements.topKValue.textContent = state.topK;
-            localStorage.setItem('openrag_top_k', state.topK);
+            localStorage.setItem('ragforge_top_k', state.topK);
         });
 
         // Drag & Drop events
@@ -299,9 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.activeFilename = data.filename;
                 state.activeChunksCount = data.chunks_count;
                 
-                localStorage.setItem('openrag_collection', data.collection_name);
-                localStorage.setItem('openrag_filename', data.filename);
-                localStorage.setItem('openrag_chunks', data.chunks_count);
+                localStorage.setItem('ragforge_collection', data.collection_name);
+                localStorage.setItem('ragforge_filename', data.filename);
+                localStorage.setItem('ragforge_chunks', data.chunks_count);
                 
                 setTimeout(() => {
                     elements.uploadProgressContainer.style.display = 'none';
@@ -343,9 +343,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.activeFilename = null;
                 state.activeChunksCount = 0;
                 
-                localStorage.removeItem('openrag_collection');
-                localStorage.removeItem('openrag_filename');
-                localStorage.removeItem('openrag_chunks');
+                localStorage.removeItem('ragforge_collection');
+                localStorage.removeItem('ragforge_filename');
+                localStorage.removeItem('ragforge_chunks');
                 
                 updateActiveIndexUI(false);
                 

@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ OpenRAG
+# ⚡ RAGForge
 
 ### *A Production-Grade, Highly Modular RAG Framework & Plug-and-Play Toolkit*
 
@@ -22,9 +22,9 @@
 
 </div>
 
-**OpenRAG** is an open-source, highly modular Retrieval-Augmented Generation (RAG) framework built for software engineers, AI researchers, and open-source contributors. Unlike monolithic chatbot scripts, **OpenRAG** decouples every single component in the RAG pipeline into plug-and-play, replaceable modules backed by abstract interfaces and a dynamic registry system.
+**RAGForge** is an open-source, highly modular Retrieval-Augmented Generation (RAG) framework built for software engineers, AI researchers, and open-source contributors. Unlike monolithic chatbot scripts, **RAGForge** decouples every single component in the RAG pipeline into plug-and-play, replaceable modules backed by abstract interfaces and a dynamic registry system.
 
-Whether you need to swap vector databases from **ChromaDB** to **FAISS**, **Qdrant**, or **Pinecone**, switch embedding models, or ingest non-traditional documents (CSV, Markdown, Web URLs, YouTube transcripts, GitHub repositories), OpenRAG lets you register new components with a single Python decorator.
+Whether you need to swap vector databases from **ChromaDB** to **FAISS**, **Qdrant**, or **Pinecone**, switch embedding models, or ingest non-traditional documents (CSV, Markdown, Web URLs, YouTube transcripts, GitHub repositories), RAGForge lets you register new components with a single Python decorator.
 
 ---
 
@@ -116,7 +116,7 @@ Navigate to `http://127.0.0.1:5000` to access the glassmorphic web dashboard!
 
 ## 🧩 Plugin Ecosystem
 
-OpenRAG allows contributors to easily add new capabilities:
+RAGForge allows contributors to easily add new capabilities:
 
 | Component Type | Included Plugins |
 | --- | --- |
@@ -173,8 +173,8 @@ Run any of the provided example scripts under `examples/`:
 
 ## 🙋 FAQ
 
-#### Q: How does OpenRAG handle missing vector store packages?
-**A**: OpenRAG uses graceful lazy-loading. If a user selects `qdrant` or `pinecone` without having installed `qdrant-client` or `pinecone-client`, OpenRAG raises a descriptive `PluginDependencyError` instructing the user on how to install the required package.
+#### Q: How does RAGForge handle missing vector store packages?
+**A**: RAGForge uses graceful lazy-loading. If a user selects `qdrant` or `pinecone` without having installed `qdrant-client` or `pinecone-client`, RAGForge raises a descriptive `PluginDependencyError` instructing the user on how to install the required package.
 
 #### Q: Is the original Flask app still supported?
 **A**: Yes! The original Flask application endpoints in `api/routes.py` and `app.py` use adapter layers (`rag/`) that seamlessly map onto the new `RAGService` orchestrator.
@@ -184,3 +184,4 @@ Run any of the provided example scripts under `examples/`:
 ## 📜 License
 
 Distributed under the [MIT License](LICENSE).
+

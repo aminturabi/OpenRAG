@@ -1,4 +1,4 @@
-"""Pinecone vector store plugin for OpenRAG."""
+"""Pinecone vector store plugin for RAGForge."""
 
 import os
 from typing import List, Any
