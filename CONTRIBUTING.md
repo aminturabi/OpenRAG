@@ -1,12 +1,12 @@
-# Contributing to RAGForge
+# Contributing to OpenRAG
 
-Thank you for your interest in contributing to **RAGForge**! We welcome contributions from developers of all experience levels around the world.
+Thank you for your interest in contributing to **OpenRAG**! We welcome contributions from developers of all experience levels around the world.
 
 ---
 
 ## 🌟 How Can You Contribute?
 
-You can contribute to RAGForge in many ways:
+You can contribute to OpenRAG in many ways:
 - **Add New Plugins**: Create new document loaders, vector stores, chunking strategies, embeddings, or LLM providers under `plugins/` or component directories.
 - **Improve Documentation**: Enhance docstrings, write new guides, or refine existing documentation.
 - **Fix Bugs**: Find open issues marked `bug` and submit a Pull Request.
@@ -18,8 +18,8 @@ You can contribute to RAGForge in many ways:
 
 1. **Fork and Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/RAGForge.git
-   cd RAGForge
+   git clone https://github.com/aminturabi/OpenRAG.git
+   cd OpenRAG
    ```
 
 2. **Create a Virtual Environment**
@@ -46,7 +46,7 @@ You can contribute to RAGForge in many ways:
 
 ## 🧩 Adding a New Plugin
 
-Adding a plugin to RAGForge is as simple as creating a single file:
+Adding a plugin to OpenRAG is as simple as creating a single file:
 
 1. Inherit from the appropriate contract in `core/contracts.py`:
    ```python

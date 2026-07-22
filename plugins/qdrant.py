@@ -1,4 +1,4 @@
-"""Qdrant vector store plugin for RAGForge."""
+"""Qdrant vector store plugin for OpenRAG."""
 
 from typing import List, Dict, Any
 

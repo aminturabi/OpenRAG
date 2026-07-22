@@ -17,10 +17,10 @@ def test_csv_loader(tmp_path: Path):
 
 def test_markdown_loader(tmp_path: Path):
     md_file = tmp_path / "doc.md"
-    md_file.write_text("# RAGForge\n\nModular RAG Framework.", encoding="utf-8")
+    md_file.write_text("# OpenRAG\n\nModular RAG Framework.", encoding="utf-8")
     loader = MarkdownLoader()
     text = loader.load(str(md_file))
-    assert "# RAGForge" in text
+    assert "# OpenRAG" in text
     assert "Modular RAG Framework." in text
 
 

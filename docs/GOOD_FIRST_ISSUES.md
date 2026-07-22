@@ -1,6 +1,6 @@
 # Good First Issues for Contributors
 
-Welcome! Below is a curated list of beginner-friendly tasks designed for developers looking to make their first contribution to **RAGForge**.
+Welcome! Below is a curated list of beginner-friendly tasks designed for developers looking to make their first contribution to **OpenRAG**.
 
 ---
 

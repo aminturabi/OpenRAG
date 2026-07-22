@@ -1,6 +1,6 @@
-# RAGForge Architectural Overview
+# OpenRAG Architectural Overview
 
-**RAGForge** is built around Clean Architecture and SOLID principles, fully decoupling delivery layers, business logic, and third-party integrations.
+**OpenRAG** is built around Clean Architecture and SOLID principles, fully decoupling delivery layers, business logic, and third-party integrations.
 
 ```
                     ┌─────────────────────────┐

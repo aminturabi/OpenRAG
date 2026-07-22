@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-We provide security updates for the latest stable release of RAGForge.
+We provide security updates for the latest stable release of OpenRAG.
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -11,9 +11,9 @@ We provide security updates for the latest stable release of RAGForge.
 
 ## Reporting a Vulnerability
 
-If you discover a potential security vulnerability in **RAGForge**, please do not report it through a public GitHub issue.
+If you discover a potential security vulnerability in **OpenRAG**, please do not report it through a public GitHub issue.
 
-Instead, please send a detailed security report via email to **security@ragforge.org** or submit a private security advisory through GitHub.
+Instead, please send a detailed security report via email to **security@openrag.org** or submit a private security advisory through GitHub.
 
 ### Please include:
 1. Type of vulnerability (e.g., prompt injection, credential exposure, path traversal).

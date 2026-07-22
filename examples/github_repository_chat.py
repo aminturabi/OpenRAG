@@ -1,4 +1,4 @@
-"""Example: Chatting with GitHub repository codebases using RAGForge."""
+"""Example: Chatting with GitHub repository codebases using OpenRAG."""
 
 import os
 import sys
@@ -25,11 +25,11 @@ def main():
 
     service.vectorstore.add_documents(col_name, chunks, embeddings, ids)
 
-    question = "How are components registered in the RAGForge plugin architecture?"
+    question = "How are components registered in the OpenRAG plugin architecture?"
     print(f"Querying codebase: '{question}'...")
     
     result = service.query(col_name, question)
-    print("\n=== RAGForge Response ===")
+    print("\n=== OpenRAG Response ===")
     print(result["answer"])
 
 

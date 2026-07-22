@@ -1,4 +1,4 @@
-"""Example: Chatting with PDF documents using RAGForge."""
+"""Example: Chatting with PDF documents using OpenRAG."""
 
 import os
 import sys
@@ -20,7 +20,7 @@ def main():
     
     try:
         result = run_file_chat(sample_pdf, question)
-        print("\n=== RAGForge Response ===")
+        print("\n=== OpenRAG Response ===")
         print(result["answer"])
         print("\n=== Context Grounding ===")
         for i, ctx in enumerate(result.get("context", []), 1):

@@ -1,4 +1,4 @@
-"""Example: Chatting with CSV datasets using RAGForge."""
+"""Example: Chatting with CSV datasets using OpenRAG."""
 
 import os
 import sys
@@ -13,7 +13,7 @@ def main():
     # Create a temporary sample CSV file if none exists
     csv_content = (
         "Project,Version,Status,Category\n"
-        "RAGForge,1.0.0,Active,Framework\n"
+        "OpenRAG,1.0.0,Active,Framework\n"
         "ChromaDB,0.4.0,Active,VectorStore\n"
         "GroqInference,2.1.0,Active,LLM\n"
     )
@@ -22,12 +22,12 @@ def main():
         f.write(csv_content)
         temp_csv_path = f.name
 
-    question = "What is the status and version of RAGForge?"
+    question = "What is the status and version of OpenRAG?"
     print(f"Indexing sample CSV and asking: '{question}'...")
 
     try:
         result = run_file_chat(temp_csv_path, question)
-        print("\n=== RAGForge Response ===")
+        print("\n=== OpenRAG Response ===")
         print(result["answer"])
     finally:
         if os.path.exists(temp_csv_path):

@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Application State
     // -------------------------------------------------------------
     const state = {
-        activeCollection: localStorage.getItem('clarity_rag_collection') || null,
-        activeFilename: localStorage.getItem('clarity_rag_filename') || null,
-        activeChunksCount: localStorage.getItem('clarity_rag_chunks') || 0,
-        apiKey: localStorage.getItem('clarity_groq_api_key') || '',
-        topK: parseInt(localStorage.getItem('clarity_top_k')) || 4,
+        activeCollection: localStorage.getItem('openrag_collection') || localStorage.getItem('clarity_rag_collection') || null,
+        activeFilename: localStorage.getItem('openrag_filename') || localStorage.getItem('clarity_rag_filename') || null,
+        activeChunksCount: localStorage.getItem('openrag_chunks') || localStorage.getItem('clarity_rag_chunks') || 0,
+        apiKey: localStorage.getItem('openrag_groq_api_key') || localStorage.getItem('clarity_groq_api_key') || '',
+        topK: parseInt(localStorage.getItem('openrag_top_k') || localStorage.getItem('clarity_top_k')) || 4,
         messageContexts: {} // Map to store message ID -> context chunks
     };
 
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (elements.apiKeyInput) {
             elements.apiKeyInput.addEventListener('input', (e) => {
                 state.apiKey = e.target.value.trim();
-                localStorage.setItem('clarity_groq_api_key', state.apiKey);
+                localStorage.setItem('openrag_groq_api_key', state.apiKey);
             });
         }
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.topKSlider.addEventListener('input', (e) => {
             state.topK = parseInt(e.target.value);
             elements.topKValue.textContent = state.topK;
-            localStorage.setItem('clarity_top_k', state.topK);
+            localStorage.setItem('openrag_top_k', state.topK);
         });
 
         // Drag & Drop events
@@ -299,9 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.activeFilename = data.filename;
                 state.activeChunksCount = data.chunks_count;
                 
-                localStorage.setItem('clarity_rag_collection', data.collection_name);
-                localStorage.setItem('clarity_rag_filename', data.filename);
-                localStorage.setItem('clarity_rag_chunks', data.chunks_count);
+                localStorage.setItem('openrag_collection', data.collection_name);
+                localStorage.setItem('openrag_filename', data.filename);
+                localStorage.setItem('openrag_chunks', data.chunks_count);
                 
                 setTimeout(() => {
                     elements.uploadProgressContainer.style.display = 'none';
@@ -343,9 +343,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.activeFilename = null;
                 state.activeChunksCount = 0;
                 
-                localStorage.removeItem('clarity_rag_collection');
-                localStorage.removeItem('clarity_rag_filename');
-                localStorage.removeItem('clarity_rag_chunks');
+                localStorage.removeItem('openrag_collection');
+                localStorage.removeItem('openrag_filename');
+                localStorage.removeItem('openrag_chunks');
                 
                 updateActiveIndexUI(false);
                 

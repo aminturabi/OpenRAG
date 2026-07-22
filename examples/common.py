@@ -1,4 +1,4 @@
-"""Reusable example runner for RAGForge."""
+"""Reusable example runner for OpenRAG."""
 
 import os
 from core.container import build_service
