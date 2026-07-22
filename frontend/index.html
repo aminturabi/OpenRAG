@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClarityRAG - Premium PDF & Document Chatbot</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="logo-glow"></div>
+                <i data-lucide="sparkles" class="brand-icon"></i>
+                <h1>Clarity<span>RAG</span></h1>
+            </div>
+            
+            <div class="sidebar-scroll">
+                <!-- Settings Panel -->
+                <div class="sidebar-section">
+                    <h2 class="section-title"><i data-lucide="settings"></i> Configurations</h2>
+                    
+                    <div class="setting-group">
+                        <label for="topK">Context Size (Top K)</label>
+                        <div class="slider-container">
+                            <input type="range" id="topK" min="2" max="10" value="4" step="1">
+                            <span id="topKValue">4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Upload Section -->
+                <div class="sidebar-section">
+                    <h2 class="section-title"><i data-lucide="file-text"></i> Knowledge Base</h2>
+                    
+                    <!-- Hidden File Input -->
+                    <input type="file" id="fileInput" accept=".pdf,.txt,.md,.json,.csv" style="display: none;">
+                    
+                    <!-- Drag & Drop Uploader -->
+                    <div class="upload-dropzone" id="dropzone">
+                        <i data-lucide="upload-cloud" class="upload-icon"></i>
+                        <p class="upload-text">Drag & drop your document</p>
+                        <p class="upload-subtext">PDF, TXT, MD, JSON, CSV (Max 20MB)</p>
+                        <button class="btn btn-secondary btn-sm" id="browseBtn" type="button">Choose File</button>
+                    </div>
+
+                    <!-- Progress Indicator -->
+                    <div class="upload-progress-container" id="uploadProgressContainer" style="display: none;">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="progressBarFill"></div>
+                        </div>
+                        <div class="progress-status">
+                            <span id="progressText">Parsing document...</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Document Info -->
+                <div class="sidebar-section" id="activeDocSection" style="display: none;">
+                    <h2 class="section-title"><i data-lucide="database"></i> Active Index</h2>
+                    <div class="active-doc-card">
+                        <div class="doc-meta">
+                            <i data-lucide="file-check" class="doc-icon"></i>
+                            <div class="doc-details">
+                                <h4 class="doc-title" id="activeDocName">document.pdf</h4>
+                                <span class="doc-chunks" id="activeDocChunks">0 chunks indexed</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger btn-icon-only" id="clearIndexBtn" title="Clear current index">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="status-dot green"></span>
+                    <span class="status-label">Flask Server Connected</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="header-doc-status" id="headerDocStatus">
+                    <i data-lucide="info" class="status-info-icon"></i>
+                    <span id="headerDocText">No document loaded. Upload a document to start asking questions.</span>
+                </div>
+            </header>
+
+            <!-- Conversations list -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome View -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-logo">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+                    <h2>Welcome to ClarityRAG</h2>
+                    <p class="welcome-lead">An advanced Retrieval-Augmented Generation agent. Chat dynamically with your PDF and text documents with complete grounding.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i data-lucide="shield-check" class="feature-icon"></i>
+                            <h3>100% Grounded</h3>
+                            <p>Answers are derived strictly from your document context to eliminate hallucinations.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i data-lucide="zap" class="feature-icon"></i>
+                            <h3>Ultra-Fast</h3>
+                            <p>Powered by local embeddings and Groq's high-throughput Llama inference.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i data-lucide="database" class="feature-icon"></i>
+                            <h3>Local Indexing</h3>
+                            <p>Maintained via ChromaDB persistent collections with configurable recall capacity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-container">
+                <form id="chatForm">
+                    <div class="input-wrapper">
+                        <textarea id="queryInput" placeholder="Ask a question about the active document..." rows="1" required disabled></textarea>
+                        <button type="submit" id="sendBtn" class="btn btn-primary btn-circle" disabled title="Send Query">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Drawer Panel for Context / Chunks Inspection -->
+        <div class="context-drawer" id="contextDrawer">
+            <div class="drawer-header">
+                <h3><i data-lucide="zoom-in"></i> Retrieved Context</h3>
+                <button class="btn-close" id="closeDrawerBtn" title="Close Panel">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-content" id="drawerContent">
+                <!-- Retrieved chunks will go here -->
+            </div>
+        </div>
+        
+        <!-- Overlay for closing drawer -->
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+    </div>
+
+    <!-- Global Error Boundary Script -->
+    <script>
+        window.onerror = function(message, source, lineno, colno, error) {
+            const banner = document.createElement('div');
+            banner.style.position = 'fixed';
+            banner.style.top = '0';
+            banner.style.left = '0';
+            banner.style.width = '100%';
+            banner.style.backgroundColor = '#ef4444';
+            banner.style.color = 'white';
+            banner.style.padding = '14px 24px';
+            banner.style.zIndex = '999999';
+            banner.style.fontFamily = 'monospace';
+            banner.style.fontSize = '13px';
+            banner.style.boxShadow = '0 4px 16px rgba(0,0,0,0.5)';
+            banner.innerHTML = `<strong>JS Error:</strong> ${message} <span style="opacity: 0.8; font-size:11px;">at ${source}:${lineno}:${colno}</span>`;
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '✕';
+            closeBtn.style.float = 'right';
+            closeBtn.style.color = 'white';
+            closeBtn.style.border = 'none';
+            closeBtn.style.background = 'none';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.fontSize = '16px';
+            closeBtn.style.fontWeight = 'bold';
+            closeBtn.onclick = () => banner.remove();
+            
+            banner.appendChild(closeBtn);
+            document.body.appendChild(banner);
+            return false;
+        };
+    </script>
+
+    <!-- Script file -->
+    <script src="script.js"></script>
+</body>
+</html>

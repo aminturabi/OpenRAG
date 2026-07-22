@@ -1,0 +1,38 @@
+name: Bug Report
+description: Create a report to help us fix a bug or unexpected behavior in RAGForge.
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for taking the time to submit a bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps To Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Instantiate `RAGService` with `FAISS` plugin.
+        2. Call `index_document(...)`.
+        3. See error...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Traceback / Logs
+      description: Paste any relevant console output or stack trace.
+      render: shell
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Info
+      description: Python version, OS, installed dependencies.
+      placeholder: Python 3.11, Windows 11, RAGForge 1.0.0

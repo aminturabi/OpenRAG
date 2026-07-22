@@ -1,0 +1,24 @@
+name: Feature Request / New Plugin
+description: Propose a new feature, component loader, or vector store plugin.
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Proposed Feature or Plugin
+      description: Explain the component (e.g. EPUB Loader, Hybrid Search Retriever, Ollama LLM Plugin).
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case & Motivation
+      description: Why is this plugin or feature valuable to RAGForge users?
+    validations:
+      required: true
+  - type: textarea
+    id: technical-design
+    attributes:
+      label: Proposed Technical Implementation
+      description: Outline which contracts in `core/contracts.py` will be implemented.

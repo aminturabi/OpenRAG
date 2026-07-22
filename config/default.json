@@ -1,0 +1,42 @@
+{
+  "loader": {
+    "name": "composite",
+    "options": {}
+  },
+  "chunker": {
+    "name": "recursive_character",
+    "options": {
+      "chunk_size": 1000,
+      "overlap": 150
+    }
+  },
+  "embeddings": {
+    "name": "sentence_transformer",
+    "options": {
+      "model_name": "all-MiniLM-L6-v2"
+    }
+  },
+  "vectorstore": {
+    "name": "chroma",
+    "options": {}
+  },
+  "retriever": {
+    "name": "dense_retriever",
+    "options": {}
+  },
+  "reranker": {
+    "name": "noop",
+    "options": {}
+  },
+  "llm": {
+    "name": "groq",
+    "options": {
+      "model_name": "openai/gpt-oss-120b"
+    }
+  },
+  "formatter": {
+    "name": "default_json",
+    "options": {}
+  }
+}
+
